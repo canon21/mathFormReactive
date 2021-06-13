@@ -16,7 +16,7 @@ export class EquationComponent implements OnInit {
     b: new FormControl(this.randomNumber()),
     answer: new FormControl('' /*, [Validators.required]*/) //aggiungendo un validator al singolo formControl -> in questo caso answer
     }, //secondo argomento
-    [ MathValidators.addition ]  //applicando un validator al tutto il formGroup
+    [ MathValidators.addition('answer','a','b') ]  //applicando un validator al tutto il formGroup
   );
 
   constructor() { }
