@@ -9,7 +9,7 @@ import { MathValidators } from '../math-validators';
   styleUrls: ['./equation.component.css']
 })
 export class EquationComponent implements OnInit {
-
+  secondsPerSolution: number = 0;
   mathForm = new FormGroup(
     //primo argomento
     {
@@ -23,11 +23,16 @@ export class EquationComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    const startTime = new Date();
+    let numberSolved = 0;
+
     this.mathForm.statusChanges
     .pipe(
       filter((value) => value === 'VALID'),
       delay(400))
     .subscribe(() => {
+      numberSolved += 1;
+      this.secondsPerSolution = (new Date().getTime() - startTime.getTime()) / numberSolved / 1000
       /*
       Adding filter, posso rimuovere questo statement.
       if(value === "INVALID") {
