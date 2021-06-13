@@ -27,7 +27,7 @@ export class EquationComponent implements OnInit {
     const startTime = new Date();
     let numberSolved = 0;
     */
-   
+
     this.mathForm.statusChanges
     .pipe(
       filter((value) => value === 'VALID'),
@@ -88,6 +88,10 @@ export class EquationComponent implements OnInit {
 
   get b() {
     return this.mathForm.value.b;
+  }
+
+  get answer(){
+    return this.mathForm.value.answer;
   }
 
   private randomNumber(): number {

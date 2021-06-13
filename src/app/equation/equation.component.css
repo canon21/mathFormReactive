@@ -30,3 +30,11 @@ input:focus {
     text-align: center;
     font-size: 24px;
 }
+
+.validSolution {
+    background-color: chartreuse;
+}
+
+.badSolution {
+    background-color: coral;
+}
