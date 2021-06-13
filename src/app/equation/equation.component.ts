@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-equation',
@@ -8,11 +8,23 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class EquationComponent implements OnInit {
 
-  mathForm = new FormGroup({
+  mathForm = new FormGroup(
+    //primo argomento
+    {
     a: new FormControl(this.randomNumber()),
     b: new FormControl(this.randomNumber()),
-    answer: new FormControl('')
-  });
+    answer: new FormControl('' /*, [Validators.required]*/) //aggiungendo un validator al singolo formControl -> in questo caso answer
+    }, //secondo argomento
+    [(form: AbstractControl ) => {
+      const {a, b, answer } = form.value;
+      if( a + b === parseInt(answer)) {
+          return null;
+      }
+      
+      return { addition : true};
+    }]  //applicando un validator al tutto il formGroup
+  );
+
   constructor() { }
 
   ngOnInit(): void {
@@ -31,7 +43,7 @@ export class EquationComponent implements OnInit {
     return this.mathForm.value.b;
   }
   */
- 
+
   get a() {
     return this.mathForm.value.a;
      /*
