@@ -1,1 +1,4 @@
-<p>equation works!</p>
+<form [formGroup]="mathForm">
+    {{ mathForm.get('a').value }} + <!--Oppur mathForm.controls.a.value oppure mathForm.value.a-->
+    {{ mathForm.controls.b.value }}
+</form>
