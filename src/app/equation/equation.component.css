@@ -38,3 +38,7 @@ input:focus {
 .badSolution {
     background-color: coral;
 }
+
+.close {
+    background-color: rgba(255, 235, 60, 0.3);
+}
