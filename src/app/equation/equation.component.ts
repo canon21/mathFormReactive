@@ -22,6 +22,26 @@ export class EquationComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.mathForm.statusChanges.subscribe((value) => {
+      if(value === "INVALID") {
+        return;
+      }
+      /*
+      const {a, b, answer } = this.mathForm.controls;
+      a.setValue(this.randomNumber());
+      b.setValue(this.randomNumber());
+      answer.setValue('');
+      */
+      //sintassi alternativa, più concisa. Ma per usarla bisogna passare come oggetto tutti i form control
+      //esempio -> senza a, la funziona restituisce un errore.
+      
+      this.mathForm.setValue({
+        a:this.randomNumber(),
+        b:this.randomNumber(),
+        answer: ''
+      })
+
+    })
   }
 
   /*
