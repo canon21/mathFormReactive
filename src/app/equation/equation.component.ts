@@ -34,7 +34,7 @@ export class EquationComponent implements OnInit {
       */
       //sintassi alternativa, più concisa. Ma per usarla bisogna passare come oggetto tutti i form control
       //esempio -> senza a, la funziona restituisce un errore.
-      
+      //per cambiare parzialmente, si può usare patchValue({})
       this.mathForm.setValue({
         a:this.randomNumber(),
         b:this.randomNumber(),
